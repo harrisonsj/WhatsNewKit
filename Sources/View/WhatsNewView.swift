@@ -155,18 +155,14 @@ private extension WhatsNewView {
                 alignment: .leading,
                 spacing: self.layout.featureVerticalSpacing
             ) {
-                Text(
-                    whatsNewText: feature.title
-                )
-                .font(.subheadline.weight(.semibold))
-                .foregroundColor(.primary)
-                .fixedSize(horizontal: false, vertical: true)
-                Text(
-                    whatsNewText: feature.subtitle
-                )
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-                .fixedSize(horizontal: false, vertical: true)
+                feature.title
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundColor(.primary)
+                    .fixedSize(horizontal: false, vertical: true)
+                feature.subtitle
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
             }
             .multilineTextAlignment(.leading)
         }.accessibilityElement(children: .combine)

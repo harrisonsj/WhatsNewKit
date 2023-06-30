@@ -8,15 +8,17 @@ public extension WhatsNew {
     struct Feature {
         
         // MARK: Properties
+
+        private let id: UUID = UUID()
         
         /// The image
         public var image: Image
         
         /// The title Text
-        public var title: Text
+        public var title: SwiftUI.Text
         
         /// The subtitle Text
-        public var subtitle: Text
+        public var subtitle: SwiftUI.Text
         
         // MARK: Initializer
         
@@ -27,12 +29,22 @@ public extension WhatsNew {
         ///   - subtitle: The subtitle Text
         public init(
             image: Image,
-            title: Text,
-            subtitle: Text
+            title: SwiftUI.Text,
+            subtitle: SwiftUI.Text
         ) {
             self.image = image
             self.title = title
             self.subtitle = subtitle
+        }
+
+        public init(
+            image: Image,
+            title: Text,
+            subtitle: Text
+        ) {
+            self.init(image: image,
+                      title: SwiftUI.Text(whatsNewText: title),
+                      subtitle: SwiftUI.Text(whatsNewText: subtitle))
         }
         
     }
@@ -66,8 +78,7 @@ extension WhatsNew.Feature: Hashable {
     public func hash(
         into hasher: inout Hasher
     ) {
-        hasher.combine(self.title)
-        hasher.combine(self.subtitle)
+        hasher.combine(self.id)
     }
     
 }
